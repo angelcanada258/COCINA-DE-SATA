@@ -572,22 +572,35 @@
       overflow: hidden;
       box-shadow: 0 30px 60px -30px rgba(27, 22, 16, 0.4);
     }
+    .story-visual .frame-a img,
+    .story-visual .frame-b img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
     .story-visual .frame-a {
       width: 75%;
       height: 75%;
       top: 0; right: 0;
-      background:
-        radial-gradient(80% 70% at 70% 30%, rgba(212, 162, 78, 0.6), transparent 60%),
-        linear-gradient(150deg, #c45a35 0%, #6f1e0e 100%);
+      background: var(--ocean-deep);
     }
     .story-visual .frame-b {
       width: 55%;
       height: 55%;
       bottom: 0; left: 0;
-      background:
-        radial-gradient(70% 70% at 30% 70%, rgba(245, 239, 227, 0.5), transparent 60%),
-        linear-gradient(150deg, #0F3A44 0%, #062028 100%);
+      background: var(--terra);
       border: 6px solid var(--paper);
+      z-index: 2;
+    }
+    .story-visual .frame-a::before,
+    .story-visual .frame-b::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%);
+      z-index: 2;
+      pointer-events: none;
     }
     .story-visual .frame-a::after,
     .story-visual .frame-b::after {
@@ -596,8 +609,10 @@
       bottom: 14px; left: 14px; right: 14px;
       font-family: 'Fraunces', serif;
       font-style: italic;
-      color: rgba(245, 239, 227, 0.85);
+      color: rgba(251, 247, 238, 0.95);
       font-size: 0.85rem;
+      z-index: 3;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
     @media (max-width: 860px) {
@@ -1303,8 +1318,12 @@
         </div>
 
         <div class="story-visual reveal delay-2">
-          <div class="frame-a" data-label="—  cocina abierta · servicio de noche"></div>
-          <div class="frame-b" data-label="—  mise en place"></div>
+          <div class="frame-a" data-label="—  Especialidades de la casa">
+            <img src="imagenes/pechuga_mango.jpg" alt="Pechuga al Mango">
+          </div>
+          <div class="frame-b" data-label="—  Frescura diaria">
+            <img src="imagenes/ensalada.png" alt="Ensalada César">
+          </div>
         </div>
       </div>
     </div>
