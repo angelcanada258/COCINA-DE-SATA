@@ -1,0 +1,16 @@
+{
+  "name": "cocina-de-sata",
+  "version": "1.0.0",
+  "description": "High-end modern fusion restaurant landing page",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}

@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Cocina de Sata · Cozumel</title>
+  <meta name="description" content="Cocina de mar y de casa en la isla de Cozumel. Recetas que llevan años puliéndose frente al Caribe. Reservas, menú, ubicación." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Palette & Tokens ──────────────────────────────────────── */
+    :root {
+      --cream:        #F5EFE3;
+      --cream-warm:   #ECE3D0;
+      --cream-deep:   #DFD2B8;
+      --paper:        #FBF7EE;
+      --ink:          #1B1610;
+      --ink-soft:     #3A3027;
+      --muted:        #8B7E6B;
+      --line:         rgba(27, 22, 16, 0.12);
+      --ocean:        #0F3A44;
+      --ocean-deep:   #082128;
+      --terra:        #C45A35;
+      --terra-soft:   #DD7E58;
+      --honey:        #D4A24E;
+      --lime:         #6F8A2E;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-weight: 400;
+      letter-spacing: -0.005em;
+    }
+
+    /* Paper grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.06;
+      mix-blend-mode: multiply;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+
+    .script {
+      font-family: 'Caveat', cursive;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    /* ─── Reveal Animation ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.22s; }
+    .delay-3 { transition-delay: 0.34s; }
+    .delay-4 { transition-delay: 0.46s; }
+    .delay-5 { transition-delay: 0.58s; }
+
+    /* ─── Header / Nav ───────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 0;
+      transition: background 0.45s ease, padding 0.35s ease, border-color 0.45s ease;
+      border-bottom: 1px solid transparent;
+    }
+    header.scrolled {
+      background: rgba(251, 247, 238, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .brand .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--terra);
+      display: inline-block;
+      transform: translateY(-3px);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
+      background: var(--terra);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .nav-cta:hover { background: var(--terra); transform: translateY(-1px); }
+    .nav-cta svg { width: 14px; height: 14px; }
+    .menu-toggle { display: none; font-size: 1.5rem; color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        position: fixed;
+        top: 0; left: 0; right: 0; height: 100vh;
+        background: rgba(251, 247, 238, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        z-index: 90;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .nav-links.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links a { font-size: 1.6rem; }
+      .menu-toggle {
+        display: flex; align-items: center; justify-content: center;
+        z-index: 100;
+        position: relative;
+        background: var(--paper);
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+    }
+
+    /* ─── Hero ───────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 180px 0 80px;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .hero-text { padding-bottom: 24px; }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .hero-meta .line {
+      flex: 0 0 60px;
+      height: 1px;
+      background: var(--terra);
+    }
+    .hero h1 {
+      font-size: clamp(3.6rem, 9vw, 8.4rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      color: var(--ink);
+    }
+    .hero h1 .accent {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ocean);
+      display: inline-block;
+    }
+    .hero h1 .scribble {
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 .scribble::after {
+      content: '';
+      position: absolute;
+      left: -2%; right: -2%; bottom: 0.08em;
+      height: 0.18em;
+      background: var(--terra);
+      opacity: 0.35;
+      border-radius: 50%;
+      transform: rotate(-1deg);
+      z-index: -1;
+    }
+    .hero-tagline {
+      margin-top: 32px;
+      max-width: 460px;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+    .hero-ctas {
+      margin-top: 44px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+      letter-spacing: 0.005em;
+    }
+    .btn-primary {
+      background: var(--terra);
+      color: var(--paper);
+      box-shadow: 0 12px 30px -12px rgba(196, 90, 53, 0.55);
+    }
+    .btn-primary:hover {
+      background: #ad4828;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px -14px rgba(196, 90, 53, 0.65);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }
+    .btn svg { width: 16px; height: 16px; }
+
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      background:
+        radial-gradient(120% 80% at 30% 20%, rgba(212, 162, 78, 0.35), transparent 60%),
+        radial-gradient(100% 80% at 80% 90%, rgba(196, 90, 53, 0.5), transparent 55%),
+        linear-gradient(160deg, #1f4148 0%, #082128 100%);
+      box-shadow: 0 30px 80px -30px rgba(8, 33, 40, 0.45);
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='nz'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23nz)' opacity='0.7'/%3E%3C/svg%3E");
+      opacity: 0.18;
+      mix-blend-mode: overlay;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-visual .badge {
+      position: absolute;
+      top: 22px; left: 22px;
+      padding: 8px 14px;
+      background: rgba(245, 239, 227, 0.92);
+      color: var(--ocean-deep);
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      z-index: 3;
+    }
+    .hero-visual .caption {
+      position: absolute;
+      left: 22px; right: 22px; bottom: 22px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 3;
+    }
+    .hero-visual .caption-text {
+      color: var(--paper);
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.25;
+      max-width: 70%;
+    }
+    .hero-visual .caption-meta {
+      color: rgba(245, 239, 227, 0.7);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .hero-marquee {
+      margin-top: 90px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 56px;
+      white-space: nowrap;
+    }
+    .marquee-track span::after {
+      content: '✦';
+      color: var(--terra);
+      font-style: normal;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 140px 0 50px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { max-width: 100%; }
+      .hero-marquee { margin-top: 60px; }
+    }
+
+    /* ─── Sections base ──────────────────────────────────────────── */
+    section { position: relative; }
+    .section-pad { padding: 130px 0; }
+    @media (max-width: 860px) { .section-pad { padding: 80px 0; } }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: end;
+    }
+    .section-head h2 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 300;
+      color: var(--ink);
+    }
+    .section-head h2 em {
+      color: var(--ocean);
+      font-weight: 300;
+    }
+    .section-head .lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    @media (max-width: 860px) {
+      .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px; }
+    }
+
+    /* ─── Manifesto (quote section) ──────────────────────────────── */
+    .manifesto {
+      background: var(--cream);
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .manifesto::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(40% 30% at 15% 15%, rgba(196, 90, 53, 0.10), transparent 60%),
+        radial-gradient(35% 35% at 85% 90%, rgba(15, 58, 68, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .manifesto .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .manifesto .quote-mark {
+      font-family: 'Fraunces', serif;
+      font-size: 6rem;
+      line-height: 0.5;
+      color: var(--terra);
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+    .manifesto blockquote {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.6vw, 3.2rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .manifesto blockquote .h {
+      color: var(--ocean);
+      font-style: italic;
+    }
+    .manifesto cite {
+      display: block;
+      margin-top: 40px;
+      font-style: normal;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ─── Story / About ──────────────────────────────────────────── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .story-text h3 {
+      font-size: clamp(2rem, 3.6vw, 3.2rem);
+      margin: 18px 0 28px;
+      font-weight: 300;
+    }
+    .story-text h3 em {
+      color: var(--terra);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .story-text p {
+      color: var(--ink-soft);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+    .story-text p:first-of-type::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 3.6rem;
+      float: left;
+      line-height: 0.85;
+      padding: 8px 12px 0 0;
+      color: var(--ocean);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .signature {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .signature-line {
+      width: 50px; height: 1px; background: var(--ink);
+    }
+    .signature-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .signature-meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .story-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+    }
+    .story-visual .frame-a,
+    .story-visual .frame-b {
+      position: absolute;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -30px rgba(27, 22, 16, 0.4);
+    }
+    .story-visual .frame-a {
+      width: 75%;
+      height: 75%;
+      top: 0; right: 0;
+      background:
+        radial-gradient(80% 70% at 70% 30%, rgba(212, 162, 78, 0.6), transparent 60%),
+        linear-gradient(150deg, #c45a35 0%, #6f1e0e 100%);
+    }
+    .story-visual .frame-b {
+      width: 55%;
+      height: 55%;
+      bottom: 0; left: 0;
+      background:
+        radial-gradient(70% 70% at 30% 70%, rgba(245, 239, 227, 0.5), transparent 60%),
+        linear-gradient(150deg, #0F3A44 0%, #062028 100%);
+      border: 6px solid var(--paper);
+    }
+    .story-visual .frame-a::after,
+    .story-visual .frame-b::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 14px; left: 14px; right: 14px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: rgba(245, 239, 227, 0.85);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 860px) {
+      .story-grid { grid-template-columns: 1fr; gap: 50px; }
+      .story-visual { max-width: 480px; margin: 0 auto; }
+    }
+
+    /* ─── Menu / Dishes ──────────────────────────────────────────── */
+    .menu-section { background: var(--paper); }
+    .dishes {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+    .dish {
+      position: relative;
+      grid-column: span 4;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .dish:hover { transform: translateY(-6px); }
+    .dish:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .dish:nth-child(2) { grid-column: span 4; }
+    .dish:nth-child(3) { grid-column: span 3; }
+    .dish:nth-child(4) { grid-column: span 4; grid-column-start: 6; }
+    .dish:nth-child(5) { grid-column: span 3; }
+
+    .dish-img {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: var(--cream-warm);
+    }
+    .dish:nth-child(1) .dish-img { aspect-ratio: 4 / 5; }
+    .dish:nth-child(2) .dish-img { aspect-ratio: 1 / 1; }
+    .dish:nth-child(3) .dish-img { aspect-ratio: 3 / 4; }
+    .dish:nth-child(4) .dish-img { aspect-ratio: 4 / 3; }
+    .dish:nth-child(5) .dish-img { aspect-ratio: 1 / 1; }
+
+    .dish-img.g-1 { background: linear-gradient(160deg, #C45A35 0%, #6f1e0e 100%); }
+    .dish-img.g-2 { background: linear-gradient(160deg, #0F3A44 0%, #062028 100%); }
+    .dish-img.g-3 { background: linear-gradient(160deg, #D4A24E 0%, #8b6420 100%); }
+    .dish-img.g-4 { background: linear-gradient(160deg, #6F8A2E 0%, #324219 100%); }
+    .dish-img.g-5 { background: linear-gradient(160deg, #DD7E58 0%, #8a3d24 100%); }
+
+    .dish-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+    .dish-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='nz2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23nz2)' opacity='0.6'/%3E%3C/svg%3E");
+      opacity: 0.22;
+      mix-blend-mode: overlay;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .dish-img .ph {
+      display: none;
+    }
+    .dish-num {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: var(--paper);
+      font-size: 1.4rem;
+      opacity: 0.9;
+      z-index: 3;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .dish-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+    .dish-meta h4 {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--ink);
+    }
+    .dish-meta .price {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--terra);
+      white-space: nowrap;
+    }
+    .dish p {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .dish .tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--lime);
+    }
+
+    @media (max-width: 980px) {
+      .dishes { grid-template-columns: repeat(6, 1fr); gap: 24px; }
+      .dish, .dish:nth-child(n) { grid-column: span 3; grid-row: auto; grid-column-start: auto; }
+      .dish .dish-img { aspect-ratio: 1 / 1 !important; }
+    }
+    @media (max-width: 600px) {
+      .dishes { grid-template-columns: 1fr; }
+      .dish, .dish:nth-child(n) { grid-column: 1; }
+    }
+
+    .menu-cta {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    /* ─── Full Menu ──────────────────────────────────────────────── */
+    .full-menu {
+      margin-top: 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px 40px;
+      border-top: 1px solid var(--line);
+      padding-top: 80px;
+    }
+    .fm-category h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 2.2rem;
+      font-style: italic;
+      color: var(--ocean-deep);
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .fm-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .fm-item::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 6px;
+      height: 1px;
+      border-bottom: 1px dotted var(--muted);
+      z-index: 1;
+      opacity: 0.4;
+    }
+    .fm-name {
+      background: var(--paper);
+      padding-right: 12px;
+      z-index: 2;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+    .fm-price {
+      background: var(--paper);
+      padding-left: 12px;
+      z-index: 2;
+      color: var(--terra);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .fm-desc {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      line-height: 1.5;
+      padding-right: 40px;
+    }
+    @media (max-width: 860px) {
+      .full-menu { grid-template-columns: 1fr; gap: 20px; }
+      .fm-category {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        background: var(--paper);
+        margin-top: 0 !important;
+      }
+      .fm-category h3 {
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.6rem;
+        pointer-events: none;
+      }
+      .fm-category h3::after {
+        content: '+';
+        font-style: normal;
+        font-family: 'Manrope', sans-serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--terra);
+        transition: transform 0.3s ease;
+      }
+      .fm-item, .fm-desc {
+        display: none;
+      }
+      .fm-category.active {
+        background: var(--cream);
+        border-color: var(--muted);
+      }
+      .fm-category.active h3 {
+        margin-bottom: 24px;
+      }
+      .fm-category.active h3::after {
+        transform: rotate(45deg);
+      }
+      .fm-category.active .fm-item {
+        display: flex;
+      }
+      .fm-category.active .fm-desc {
+        display: block;
+      }
+    }
+
+    /* ─── Numbers / Stats ────────────────────────────────────────── */
+    .stats {
+      background: var(--ocean-deep);
+      color: var(--paper);
+      padding: 130px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(60% 50% at 90% 10%, rgba(212, 162, 78, 0.15), transparent 60%),
+        radial-gradient(50% 60% at 10% 90%, rgba(196, 90, 53, 0.18), transparent 60%);
+    }
+    .stats .container { position: relative; z-index: 1; }
+    .stats .eyebrow { color: var(--honey); }
+    .stats h2 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 300;
+      max-width: 700px;
+      margin: 18px 0 80px;
+    }
+    .stats h2 em {
+      font-style: italic;
+      color: var(--terra-soft);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .stat {
+      padding: 32px 4px 0;
+      border-top: 1px solid rgba(245, 239, 227, 0.18);
+    }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 6vw, 5.6rem);
+      line-height: 0.95;
+      color: var(--paper);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      letter-spacing: -0.04em;
+    }
+    .stat-num .suffix {
+      font-size: 0.4em;
+      color: var(--honey);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .stat-label {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: rgba(245, 239, 227, 0.7);
+      line-height: 1.5;
+      max-width: 220px;
+    }
+    .stat-note {
+      margin-top: 60px;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 227, 0.4);
+      text-align: center;
+    }
+    @media (max-width: 860px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    }
+
+    /* ─── Gallery ────────────────────────────────────────────────── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 110px;
+      gap: 16px;
+    }
+    .g-item {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .g-item:hover { transform: scale(1.01); }
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+    .g-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='nz3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23nz3)' opacity='0.6'/%3E%3C/svg%3E");
+      opacity: 0.18;
+      mix-blend-mode: overlay;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .g-item .ph-tag {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      padding: 4px 10px;
+      background: rgba(251, 247, 238, 0.85);
+      color: var(--ink-soft);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      z-index: 3;
+    }
+    .g1 { grid-column: span 5; grid-row: span 4; background: linear-gradient(160deg, #c45a35 0%, #6f1e0e 100%); }
+    .g2 { grid-column: span 4; grid-row: span 3; background: linear-gradient(160deg, #0F3A44 0%, #062028 100%); }
+    .g3 { grid-column: span 3; grid-row: span 3; background: linear-gradient(160deg, #D4A24E 0%, #8b6420 100%); }
+    .g4 { grid-column: span 4; grid-row: span 3; background: linear-gradient(160deg, #6F8A2E 0%, #324219 100%); }
+    .g5 { grid-column: span 3; grid-row: span 4; background: linear-gradient(160deg, #DD7E58 0%, #8a3d24 100%); }
+    .g6 { grid-column: span 5; grid-row: span 3; background: linear-gradient(160deg, #1B1610 0%, #3A3027 100%); }
+
+    @media (max-width: 860px) {
+      .gallery { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 80px; }
+      .g1 { grid-column: span 6; grid-row: span 4; }
+      .g2 { grid-column: span 3; grid-row: span 3; }
+      .g3 { grid-column: span 3; grid-row: span 3; }
+      .g4 { grid-column: span 4; grid-row: span 3; }
+      .g5 { grid-column: span 2; grid-row: span 3; }
+      .g6 { grid-column: span 6; grid-row: span 3; }
+    }
+
+    /* ─── Visit ──────────────────────────────────────────────────── */
+    .visit {
+      background: var(--cream);
+      padding: 130px 0;
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .visit h2 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 300;
+      margin: 14px 0 32px;
+    }
+    .visit h2 em { color: var(--terra); font-style: italic; }
+    .visit-lead {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      max-width: 460px;
+      margin-bottom: 50px;
+      line-height: 1.7;
+    }
+    .info-block {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 20px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+    .info-block:last-of-type { border-bottom: 1px solid var(--line); }
+    .info-block .lbl {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      padding-top: 4px;
+    }
+    .info-block .val {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .info-block .val small {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+    .info-block .val a {
+      color: var(--ocean);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+
+    .visit-actions {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-whatsapp {
+      background: #128C7E;
+      color: var(--paper);
+    }
+    .btn-whatsapp:hover { background: #0c6b60; transform: translateY(-2px); }
+
+    .map-card {
+      position: sticky;
+      top: 100px;
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      background:
+        radial-gradient(60% 60% at 50% 40%, rgba(212, 162, 78, 0.3), transparent 70%),
+        linear-gradient(160deg, #0F3A44 0%, #062028 100%);
+      box-shadow: 0 30px 70px -30px rgba(8, 33, 40, 0.45);
+      position: relative;
+    }
+    .map-card .island {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 70%;
+    }
+    .map-card .island svg { width: 100%; height: 100%; opacity: 0.5; }
+    .map-card .pin {
+      position: absolute;
+      top: 42%; left: 48%;
+      width: 18px; height: 18px;
+      background: var(--terra);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(196, 90, 53, 0.25), 0 0 0 14px rgba(196, 90, 53, 0.12);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 6px rgba(196, 90, 53, 0.25), 0 0 0 14px rgba(196, 90, 53, 0.12); }
+      50% { box-shadow: 0 0 0 10px rgba(196, 90, 53, 0.3), 0 0 0 22px rgba(196, 90, 53, 0.05); }
+    }
+    .map-card .label {
+      position: absolute;
+      top: 22px; left: 22px;
+      color: rgba(245, 239, 227, 0.7);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .map-card .coords {
+      position: absolute;
+      bottom: 22px; left: 22px; right: 22px;
+      color: rgba(245, 239, 227, 0.55);
+      font-size: 0.72rem;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 860px) {
+      .visit-grid { grid-template-columns: 1fr; gap: 50px; }
+      .map-card { position: static; max-width: 480px; margin: 0 auto; }
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 90px 0 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(50% 80% at 50% 100%, rgba(196, 90, 53, 0.18), transparent 70%);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 70px;
+    }
+    .footer-brand {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      color: var(--cream);
+      max-width: 360px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .footer-brand em { color: var(--terra-soft); }
+    .footer-tag {
+      font-size: 0.85rem;
+      color: rgba(245, 239, 227, 0.55);
+      max-width: 320px;
+      line-height: 1.6;
+    }
+    .footer-col h5 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra-soft);
+      margin-bottom: 22px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li {
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+      color: rgba(245, 239, 227, 0.75);
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      padding-top: 30px;
+      border-top: 1px solid rgba(245, 239, 227, 0.1);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.75rem;
+      color: rgba(245, 239, 227, 0.4);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 860px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    /* ─── Floating WhatsApp ──────────────────────────────────────── */
+    .float-wa {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      background: #128C7E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--paper);
+      box-shadow: 0 10px 30px -8px rgba(18, 140, 126, 0.6);
+      z-index: 90;
+      transition: transform 0.3s ease;
+    }
+    .float-wa:hover { transform: scale(1.08) translateY(-2px); }
+    .float-wa svg { width: 28px; height: 28px; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════ HEADER ═══════════════════════ -->
+  <header id="header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        La Cocina de Sata
+        <span class="dot"></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#historia">Historia</a>
+        <a href="#carta">La carta</a>
+        <a href="#numeros">Casa</a>
+        <a href="#galeria">Galería</a>
+        <a href="#visitar">Visítanos</a>
+      </nav>
+      <a href="#visitar" class="nav-cta">
+        Reservar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="menu-toggle" aria-label="Menú">≡</button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-meta reveal">
+            <span class="line"></span>
+            <span class="eyebrow">Cozumel · Quintana Roo</span>
+          </div>
+          <h1 class="reveal delay-1">
+            Cocina de <span class="accent">mar</span><br>
+            y de <span class="scribble">tierra</span>.
+          </h1>
+          <p class="hero-tagline reveal delay-2">
+            Recetas que llevan años puliéndose frente al Caribe.
+            Desde el clásico ceviche fresco hasta las costillas BBQ y hamburguesas que te harán regresar.
+          </p>
+          <div class="hero-ctas reveal delay-3">
+            <a href="#visitar" class="btn btn-primary">
+              Reservar mesa
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-2">
+          <img src="imagenes/burger.jpg" alt="Hamburguesa Doble Tocino">
+          <span class="badge">Plato de la casa</span>
+          <div class="caption">
+            <p class="caption-text">Doble carne, tocino crujiente y extra queso fundido.</p>
+            <span class="caption-meta">Hamburguesa Especial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-marquee reveal delay-4">
+        <div class="marquee-track">
+          <span>Pescado del día</span>
+          <span>Costillas BBQ</span>
+          <span>Cocina abierta</span>
+          <span>Reservas por WhatsApp</span>
+          <span>Mesa frente al mar</span>
+          <span>Hamburguesas Especiales</span>
+          <span>Pescado del día</span>
+          <span>Costillas BBQ</span>
+          <span>Cocina abierta</span>
+          <span>Reservas por WhatsApp</span>
+          <span>Mesa frente al mar</span>
+          <span>Hamburguesas Especiales</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ MANIFESTO ═══════════════════════ -->
+  <section class="manifesto">
+    <div class="container">
+      <div class="quote-mark reveal">"</div>
+      <blockquote class="reveal delay-1">
+        Aquí no servimos platillos: <span class="h">servimos un pedazo de Cozumel</span>
+        en cada mesa. La isla en una cuchara.
+      </blockquote>
+      <cite class="reveal delay-2">— La Cocina de Sata</cite>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ STORY ═══════════════════════ -->
+  <section class="section-pad" id="historia">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text reveal">
+          <span class="eyebrow">Nuestra historia</span>
+          <h3>Una receta familiar que se volvió <em>restaurante</em>.</h3>
+          <p>
+            Empezó como muchas cosas buenas en la isla: con el deseo de compartir un buen sazón en familia. La Cocina de Sata nació de
+            esa cocina familiar, donde se aprendió a respetar los tiempos de la brasa, los mariscos frescos y los
+            recados que llevan generaciones perfeccionándose.
+          </p>
+          <p>
+            Hoy seguimos cocinando con esa misma lógica: opciones de mar y tierra, técnica honesta,
+            mesas largas. Sin pretensión y sin atajos — solo la cocina de la casa,
+            servida frente al Caribe.
+          </p>
+          <div class="signature">
+            <span class="signature-line"></span>
+            <div>
+              <div class="signature-text">Sata</div>
+              <div class="signature-meta">Cocinera & operadora</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-visual reveal delay-2">
+          <div class="frame-a" data-label="—  cocina abierta · servicio de noche"></div>
+          <div class="frame-b" data-label="—  mise en place"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ MENU ═══════════════════════ -->
+  <section class="section-pad menu-section" id="carta">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <span class="eyebrow">La carta</span>
+          <h2>Lo que <em>cocinamos</em> hoy.</h2>
+        </div>
+        <p class="lead reveal delay-1">
+          La carta cambia con lo que llega del mercado y del muelle. Estos son
+          los platillos que nos han dado nombre — y los que vuelven cada temporada.
+        </p>
+      </div>
+
+      <div class="dishes">
+        <article class="dish reveal">
+          <div class="dish-img g-1">
+            <img src="imagenes/burger.jpg" alt="Hamburguesa Especial">
+            <span class="dish-num">01</span>
+            <span class="ph">Foto pendiente</span>
+          </div>
+          <div class="dish-meta">
+            <h4>Hamburguesa Especial</h4>
+            <span class="price">$240</span>
+          </div>
+          <p>Doble carne, tocino crujiente, extra queso fundido y vegetales frescos con aderezo de la casa.</p>
+          <span class="tag">El plato de la casa</span>
+        </article>
+
+        <article class="dish reveal delay-1">
+          <div class="dish-img g-2">
+            <img src="imagenes/ribs.jpg" alt="Costillas a la BBQ">
+            <span class="dish-num">02</span>
+            <span class="ph">Foto pendiente</span>
+          </div>
+          <div class="dish-meta">
+            <h4>Costillas a la BBQ</h4>
+            <span class="price">$320</span>
+          </div>
+          <p>Costillas a la parrilla bañadas en salsa BBQ, servidas con papa al horno y crema de la casa.</p>
+          <span class="tag">Las Favoritas</span>
+        </article>
+
+        <article class="dish reveal delay-2">
+          <div class="dish-img g-3">
+            <img src="imagenes/ceviche.jpg" alt="Ceviche de Camarón">
+            <span class="dish-num">03</span>
+            <span class="ph">Foto pendiente</span>
+          </div>
+          <div class="dish-meta">
+            <h4>Ceviche de Camarón</h4>
+            <span class="price">$320</span>
+          </div>
+          <p>Camarón fresco con limón, cilantro, cebolla, tomate y un toque de aguacate. Servido con totopos.</p>
+        </article>
+
+        <article class="dish reveal delay-1">
+          <div class="dish-img g-4">
+            <img src="imagenes/ostiones.jpg" alt="Ostiones Madrazo">
+            <span class="dish-num">04</span>
+            <span class="ph">Foto pendiente</span>
+          </div>
+          <div class="dish-meta">
+            <h4>Ostiones Madrazo</h4>
+            <span class="price">$350</span>
+          </div>
+          <p>Preparados al horno con espinaca, chipotle, crema y queso gratinado. Una delicia.</p>
+          <span class="tag">Especial del Mar</span>
+        </article>
+
+        <article class="dish reveal delay-2">
+          <div class="dish-img g-5">
+            <img src="imagenes/horneado.jpg" alt="Pechuga Empapelada">
+            <span class="dish-num">05</span>
+            <span class="ph">Foto pendiente</span>
+          </div>
+          <div class="dish-meta">
+            <h4>Pechuga Empapelada</h4>
+            <span class="price">$280</span>
+          </div>
+          <p>Pechuga bañada en salsa molcajete, champiñones, crema y queso gratinado, acompañada de soufflé.</p>
+        </article>
+      </div>
+
+      <div class="full-menu reveal delay-1" id="carta-completa">
+        <div class="fm-col">
+          <div class="fm-category">
+            <h3>Botanas & Antojos</h3>
+            <div class="fm-item"><span class="fm-name">Ceviche (Camarón, Caracol o Mixto)</span><span class="fm-price">$320</span></div>
+            <div class="fm-desc">El clásico del mar, fresco y con el toque de la casa.</div>
+            <div class="fm-item"><span class="fm-name">Guacamole</span><span class="fm-price">$150</span></div>
+            <div class="fm-desc">Aguacate, cebolla, cilantro, jugo de limón. Servido con totopos.</div>
+            <div class="fm-item"><span class="fm-name">Quesadillas</span><span class="fm-price">Desde $150</span></div>
+            <div class="fm-desc">Solo queso ($150), Pollo ($200), Res ($230), Camarón ($300).</div>
+            <div class="fm-item"><span class="fm-name">Nachos</span><span class="fm-price">Desde $150</span></div>
+            <div class="fm-desc">Tradicionales ($150), Pollo ($200), Res ($230), Camarón ($300).</div>
+            <div class="fm-item"><span class="fm-name">Alitas de Pollo</span><span class="fm-price">$260</span></div>
+            <div class="fm-desc">Buffalo, Mostaza Habanero, BBQ, o Mango Habanero.</div>
+          </div>
+          
+          <div class="fm-category" style="margin-top: 50px;">
+            <h3>Ostiones</h3>
+            <div class="fm-item"><span class="fm-name">Madrazo</span><span class="fm-price">$350</span></div>
+            <div class="fm-desc">Con espinaca, chipotle, crema y queso.</div>
+            <div class="fm-item"><span class="fm-name">Diabla</span><span class="fm-price">$350</span></div>
+            <div class="fm-desc">Salsa diabla con jamón, tocino y gravy.</div>
+            <div class="fm-item"><span class="fm-name">Cárdenas</span><span class="fm-price">$350</span></div>
+            <div class="fm-desc">Con mantequilla, ajo y salsa Maggi.</div>
+            <div class="fm-item"><span class="fm-name">4x4x4</span><span class="fm-price">$350</span></div>
+            <div class="fm-desc">Combinación de Cárdenas, Madrazo y Diabla.</div>
+          </div>
+
+          <div class="fm-category" style="margin-top: 50px;">
+            <h3>Hamburguesas</h3>
+            <div class="fm-item"><span class="fm-name">Tradicional</span><span class="fm-price">$160</span></div>
+            <div class="fm-item"><span class="fm-name">Pollo Crunchy</span><span class="fm-price">$200</span></div>
+            <div class="fm-item"><span class="fm-name">Mac and Cheese</span><span class="fm-price">$220</span></div>
+            <div class="fm-item"><span class="fm-name">Doble Tocino con Queso</span><span class="fm-price">$240</span></div>
+            <div class="fm-item"><span class="fm-name">Hamburguesa de Camarón</span><span class="fm-price">$360</span></div>
+          </div>
+        </div>
+
+        <div class="fm-col">
+          <div class="fm-category">
+            <h3>Del Mar</h3>
+            <div class="fm-item"><span class="fm-name">Camarones al Ajo</span><span class="fm-price">$320</span></div>
+            <div class="fm-desc">Servidos con verduras al vapor.</div>
+            <div class="fm-item"><span class="fm-name">Camarones Empanizados</span><span class="fm-price">$360</span></div>
+            <div class="fm-desc">Con salsa tártara, verduras al vapor y ensalada de col.</div>
+            <div class="fm-item"><span class="fm-name">Filete de Pescado Trankiki</span><span class="fm-price">$320</span></div>
+            <div class="fm-desc">Con espinaca, salsa diabla y crema de chipotle.</div>
+            <div class="fm-item"><span class="fm-name">Camarones BBQ</span><span class="fm-price">$360</span></div>
+            <div class="fm-desc">Con verduras y papas a la francesa.</div>
+          </div>
+
+          <div class="fm-category" style="margin-top: 50px;">
+            <h3>Platos Fuertes</h3>
+            <div class="fm-item"><span class="fm-name">Costillas BBQ</span><span class="fm-price">$320</span></div>
+            <div class="fm-item"><span class="fm-name">Sabana (Res, Pollo o Arrachera)</span><span class="fm-price">Desde $280</span></div>
+            <div class="fm-desc">Invierno o Malinche, cubierto con frijoles, salsas y gratinado.</div>
+            <div class="fm-item"><span class="fm-name">Pechuga (Romana, Popeye, Madrazo)</span><span class="fm-price">$280</span></div>
+            <div class="fm-desc">Diferentes preparaciones, rellenos y salsas de la casa.</div>
+            <div class="fm-item"><span class="fm-name">Arrachera Madrazo</span><span class="fm-price">$300</span></div>
+            <div class="fm-item"><span class="fm-name">Fettucine Alfredo</span><span class="fm-price">Desde $200</span></div>
+            <div class="fm-item"><span class="fm-name">Cordon Bleu</span><span class="fm-price">$280</span></div>
+          </div>
+
+          <div class="fm-category" style="margin-top: 50px;">
+            <h3>Comida Mexicana</h3>
+            <div class="fm-item"><span class="fm-name">Fajitas</span><span class="fm-price">Desde $260</span></div>
+            <div class="fm-desc">Pollo, Res, Camarón o Mixtas. Servidas con frijoles refritos, arroz, guacamole y tortillas.</div>
+            <div class="fm-item"><span class="fm-name">Tacos (Orden de 3)</span><span class="fm-price">Desde $150</span></div>
+            <div class="fm-item"><span class="fm-name">Burritos</span><span class="fm-price">Desde $150</span></div>
+            <div class="fm-item"><span class="fm-name">Enchiladas de Pollo</span><span class="fm-price">$200</span></div>
+            <div class="fm-item"><span class="fm-name">Ensalada César</span><span class="fm-price">$150</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ STATS ═══════════════════════ -->
+  <section class="stats" id="numeros">
+    <div class="container">
+      <span class="eyebrow reveal">La casa en números</span>
+      <h2 class="reveal delay-1">
+        Lo que se cocina cuando uno <em>lleva años</em> haciendo lo mismo.
+      </h2>
+
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <div class="stat-num" data-target="12"><span data-counter>0</span><span class="suffix">años</span></div>
+          <p class="stat-label">cocinando en la isla, con la misma receta de fondo.</p>
+        </div>
+        <div class="stat reveal delay-1">
+          <div class="stat-num" data-target="48"><span data-counter>0</span><span class="suffix">comensales</span></div>
+          <p class="stat-label">aforo de la casa, mesas para grupos chicos y largos.</p>
+        </div>
+        <div class="stat reveal delay-2">
+          <div class="stat-num" data-target="6"><span data-counter>0</span><span class="suffix">/ semana</span></div>
+          <p class="stat-label">días abiertos, descanso los lunes para limpiar y abastecer.</p>
+        </div>
+        <div class="stat reveal delay-3">
+          <div class="stat-num" data-target="3"><span data-counter>0</span><span class="suffix">recados</span></div>
+          <p class="stat-label">propios — negro, rojo y verde — molidos en casa cada semana.</p>
+        </div>
+      </div>
+
+      <p class="stat-note reveal delay-4">
+        ✦   números reales pendientes de actualizar con Sata   ✦
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ GALLERY ═══════════════════════ -->
+  <section class="section-pad" id="galeria">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <span class="eyebrow">El lugar</span>
+          <h2>Mesas, <em>cocina</em>, y la isla afuera.</h2>
+        </div>
+        <p class="lead reveal delay-1">
+          Cómo se ve un servicio cualquiera. La cocina abierta, los platos que salen,
+          la luz del Caribe entrando por la ventana.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <div class="g-item g1 reveal"><img src="imagenes/ribs.jpg" alt="Costillas"><span class="ph-tag">Costillas BBQ</span></div>
+        <div class="g-item g2 reveal delay-1"><img src="imagenes/ostiones.jpg" alt="Ostiones"><span class="ph-tag">Ostiones al Horno</span></div>
+        <div class="g-item g3 reveal delay-2"><img src="imagenes/burger.jpg" alt="Hamburguesa"><span class="ph-tag">Hamburguesas</span></div>
+        <div class="g-item g4 reveal delay-1"><img src="imagenes/horneado.jpg" alt="Especial"><span class="ph-tag">Especialidades</span></div>
+        <div class="g-item g5 reveal delay-2"><img src="imagenes/ceviche.jpg" alt="Ceviche"><span class="ph-tag">Ceviche Fresco</span></div>
+        <div class="g-item g6 reveal delay-3"><div style="background:var(--ink-soft); width:100%; height:100%; position:absolute; top:0; left:0; z-index:0;"></div><span class="ph-tag">Comedor</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ VISIT ═══════════════════════ -->
+  <section class="visit" id="visitar">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="reveal">
+          <span class="eyebrow">Visítanos</span>
+          <h2>La mesa <em>te espera</em>.</h2>
+          <p class="visit-lead">
+            Reserva por WhatsApp — es lo más rápido. Si caes sin reservación
+            te acomodamos en cuanto haya espacio; los fines de semana conviene avisar.
+          </p>
+
+          <div class="info-block">
+            <span class="lbl">Dirección</span>
+            <div class="val">
+              Cozumel, Quintana Roo
+              <small>Dirección exacta — pendiente de confirmar con Sata</small>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="lbl">Horario</span>
+            <div class="val">
+              Martes a domingo
+              <small>13:00 – 22:00 · Lunes cerrado</small>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="lbl">Reservas</span>
+            <div class="val">
+              <a href="https://wa.me/52" target="_blank">WhatsApp directo</a>
+              <small>WhatsApp del restaurante — pendiente</small>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="lbl">Redes</span>
+            <div class="val">
+              <a href="#" target="_blank">Instagram</a>
+              <small>@cocinadesata — perfil pendiente de activar</small>
+            </div>
+          </div>
+
+          <div class="visit-actions">
+            <a href="https://wa.me/52" target="_blank" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A7.85 7.85 0 0 0 12 4a7.94 7.94 0 0 0-6.7 12.2L4 21l4.9-1.3a7.94 7.94 0 0 0 11.8-6.85 7.85 7.85 0 0 0-3.1-6.55zM12 18.65a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.45-.16-.25a6.62 6.62 0 1 1 5.59 3.1zm3.62-4.95c-.2-.1-1.18-.58-1.36-.65s-.31-.1-.45.1-.51.65-.62.78-.23.15-.43.05a5.42 5.42 0 0 1-1.6-1 6.05 6.05 0 0 1-1.1-1.4c-.12-.2 0-.3.09-.4l.3-.34a1.4 1.4 0 0 0 .2-.34.36.36 0 0 0 0-.35c-.05-.1-.45-1.1-.62-1.5s-.33-.34-.45-.34h-.38a.74.74 0 0 0-.54.25 2.24 2.24 0 0 0-.7 1.66 3.93 3.93 0 0 0 .82 2.07 8.93 8.93 0 0 0 3.42 3.04c.48.2.85.32 1.14.41a2.75 2.75 0 0 0 1.26.08 2.06 2.06 0 0 0 1.36-.96 1.7 1.7 0 0 0 .12-.96c-.05-.08-.18-.13-.38-.23z"/></svg>
+              Reservar por WhatsApp
+            </a>
+            <a href="#" target="_blank" class="btn btn-ghost">Cómo llegar</a>
+          </div>
+        </div>
+
+        <div class="map-card reveal delay-1">
+          <span class="label">Cozumel</span>
+          <div class="island">
+            <!-- Stylized Cozumel-shaped silhouette -->
+            <svg viewBox="0 0 200 280" fill="none">
+              <path d="M100 8 C 138 14, 170 38, 178 80 C 184 110, 180 148, 168 184 C 158 218, 140 248, 116 264 C 94 274, 70 270, 52 252 C 32 232, 22 200, 22 164 C 22 132, 28 100, 42 70 C 58 36, 78 14, 100 8 Z"
+                fill="rgba(245,239,227,0.08)" stroke="rgba(245,239,227,0.45)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="pin"></div>
+          <div class="coords">
+            <span>20.42° N</span>
+            <span>—</span>
+            <span>86.92° W</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">La Cocina de <em>Sata</em>.</p>
+          <p class="footer-tag">
+            Cocina de mar y de casa en la isla de Cozumel.
+            Producto local, técnica honesta, mesa larga.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Visitar</h5>
+          <ul>
+            <li><a href="#carta">La carta</a></li>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#visitar">Reservar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li>Cozumel, Q. Roo</li>
+            <li>WhatsApp · pendiente</li>
+            <li>@cocinadesata</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Horario</h5>
+          <ul>
+            <li>Mar — Dom</li>
+            <li>13:00 – 22:00</li>
+            <li>Lunes cerrado</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> La Cocina de Sata · Cozumel</span>
+        <span>Operada con cariño por <a href="#" style="color: var(--terra-soft);">Agencia MA</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/52" target="_blank" class="float-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A7.85 7.85 0 0 0 12 4a7.94 7.94 0 0 0-6.7 12.2L4 21l4.9-1.3a7.94 7.94 0 0 0 11.8-6.85 7.85 7.85 0 0 0-3.1-6.55zM12 18.65a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.45-.16-.25a6.62 6.62 0 1 1 5.59 3.1zm3.62-4.95c-.2-.1-1.18-.58-1.36-.65s-.31-.1-.45.1-.51.65-.62.78-.23.15-.43.05a5.42 5.42 0 0 1-1.6-1 6.05 6.05 0 0 1-1.1-1.4c-.12-.2 0-.3.09-.4l.3-.34a1.4 1.4 0 0 0 .2-.34.36.36 0 0 0 0-.35c-.05-.1-.45-1.1-.62-1.5s-.33-.34-.45-.34h-.38a.74.74 0 0 0-.54.25 2.24 2.24 0 0 0-.7 1.66 3.93 3.93 0 0 0 .82 2.07 8.93 8.93 0 0 0 3.42 3.04c.48.2.85.32 1.14.41a2.75 2.75 0 0 0 1.26.08 2.06 2.06 0 0 0 1.36-.96 1.7 1.7 0 0 0 .12-.96c-.05-.08-.18-.13-.38-.23z"/></svg>
+  </a>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '≡';
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.textContent = '≡';
+      });
+    });
+
+    // Mobile Full Menu Accordion
+    document.querySelectorAll('.fm-category').forEach(cat => {
+      cat.addEventListener('click', () => {
+        if (window.innerWidth > 860) return; // Only accordion on mobile
+        const isActive = cat.classList.contains('active');
+        document.querySelectorAll('.fm-category').forEach(c => c.classList.remove('active'));
+        if (!isActive) cat.classList.add('active');
+      });
+    });
+
+    // Header scroll state
+    const header = document.getElementById('header');
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          if (e.target.classList.contains('stat')) startCounter(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Counter animation
+    function startCounter(stat) {
+      const numWrap = stat.querySelector('.stat-num');
+      const target = parseInt(numWrap.dataset.target, 10);
+      const counter = numWrap.querySelector('[data-counter]');
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        counter.textContent = Math.round(target * eased);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

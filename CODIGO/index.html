@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COCINA DE SATA | Modern Fusion</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <nav class="nav">
+      <div class="nav__logo">COCINA DE SATA</div>
+      
+      <!-- Hamburger Menu for Mobile -->
+      <button class="nav__toggle" aria-label="Abrir menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="nav__links">
+        <a href="#about" class="nav__link">Historia</a>
+        <a href="#showcase" class="nav__link">Experiencia</a>
+        <a href="#menu" class="nav__link">Menú</a>
+        <!-- Reservation button inside mobile menu -->
+        <a href="#reservations" class="btn btn--outline nav__link-mobile-btn">Reservaciones</a>
+      </div>
+      <button class="btn btn--outline nav__btn-desktop">Reservaciones</button>
+    </nav>
+
+    <main class="main" id="smooth-wrapper">
+      <div id="smooth-content">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+          <div class="hero__image-wrapper">
+            <div class="hero__image"></div>
+            <div class="hero__overlay"></div>
+          </div>
+          <div class="hero__content">
+            <h1 class="hero__title">
+              <span class="hero__title-line"><span class="hero__title-inner">Cocina de</span></span>
+              <span class="hero__title-line"><span class="hero__title-inner">Sata</span></span>
+            </h1>
+            <p class="hero__subtitle">Experience culinary artistry inspired by modern fusion.</p>
+          </div>
+          <div class="hero__scroll-indicator">
+            <span>Scroll</span>
+            <div class="hero__scroll-line"></div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+          <div class="about__container">
+            <h2 class="about__heading">Nuestra Historia</h2>
+            <p class="about__text">En Cocina De Sata, combinamos sabores tradicionales con técnicas modernas para crear una experiencia gastronómica inolvidable. Nuestra pasión es redefinir los límites de la gastronomía a través de una presentación artística y los mejores ingredientes.</p>
+          </div>
+        </section>
+
+        <!-- Showcase Section -->
+        <section class="showcase" id="showcase">
+          <div class="showcase__left">
+            <div class="showcase__text-wrapper">
+              <h2 class="showcase__title">El Arte de Emplatar</h2>
+              <p class="showcase__desc">Cada ingrediente es seleccionado en el punto máximo de su temporada, transformando la naturaleza cruda en una obra maestra.</p>
+            </div>
+          </div>
+          <div class="showcase__right">
+            <div class="showcase__images">
+              <!-- Images injected via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section class="menu" id="menu">
+          <div class="menu__header">
+            <h2>Platos de Autor</h2>
+          </div>
+          <div class="menu__grid">
+            <div class="menu__item">
+              <h3>Seared Wagyu Beef</h3>
+              <p>Truffle ponzu, crispy garlic, micro herbs</p>
+              <div class="menu__price">$85</div>
+            </div>
+            <div class="menu__item">
+              <h3>Miso Glazed Black Cod</h3>
+              <p>Charred bok choy, ginger dashi, lotus root</p>
+              <div class="menu__price">$65</div>
+            </div>
+            <div class="menu__item">
+              <h3>Lobster Ravioli</h3>
+              <p>Saffron foam, caviar, chive oil</p>
+              <div class="menu__price">$55</div>
+            </div>
+            <div class="menu__item">
+              <h3>Matcha Panna Cotta</h3>
+              <p>Yuzu gel, sesame tuile, fresh berries</p>
+              <div class="menu__price">$25</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <h2 class="footer__title">COCINA DE SATA</h2>
+          <button class="btn btn--outline">Reserva una Mesa</button>
+          <div class="footer__bottom">
+            <p>&copy; 2026 Cocina De Sata. Todos los derechos reservados.</p>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
